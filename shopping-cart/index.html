@@ -1,0 +1,26 @@
+<html ng-app>
+	<head>
+		<link rel="stylesheet" href="../library/foundation.min.css">
+		<title>Shopping Cart</title>
+	</head>
+
+	<body ng-controller="CartController">
+		<h1>Your Order</h1>
+		<!-- ng-repeat says to copy DOM inside div once for every element in an array called items. On every copy, will set a property named item to the current element to be used in template -->
+		<div ng-repeat="item in items">
+			<!-- item.title retrieves current item in iteration and inserts contents -->
+			<span>{{item.title}}</span>
+			<!-- ng-model definition creates data binding between input field and value of item.quantity -->
+			<input ng-model="item.quantity">
+			<!-- show current item price and quantity price, apply current filter to each iteration -->
+			<span>{{item.price | currency}}</span>
+			<span>{{item.price * item.quantity | currency}}</span>
+			<!-- ng-click calls remove function and passes as argument $index, which is storing the iteration number of ng-repeat -->
+			<button ng-click="remove($index)">Remove</button>
+		</div>
+		
+
+		<script src="../library/angular.min.js"></script>
+		<script src="controllers.js"></script>
+	</body>
+</html>
