@@ -14,4 +14,16 @@ function FirstCtrl ($scope, Data) {
 
 function SecondCtrl ($scope, Data) {
 	$scope.data = Data;
+
+	//define method on the scope, called from view by calling defined function reversedMethod()
+	$scope.reversedMessage2 = function () {
+		return $scope.data.message.split("").reverse().join("");
+	};
+
+	//cleaner way to define method on scope, is to pass the binding into the function, which will look like:
+	$scope.reversedMessage = function(message) {
+		return message.split("").reverse().join("");
+	};
+
+	
 }
