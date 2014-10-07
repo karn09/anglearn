@@ -1,0 +1,28 @@
+<!--
+by using dot notation in the model (data.message), you are creating a global scope across entire application.
+if data.message is changed to message, the scope inheritance is broken, so each new ng-model of message will create a new message. 
+Each model will be an unbound instance
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Angular JS Controllers</title>
+		<link rel="stylesheet" href="../library/foundation.min.css">
+	</head>
+	<body>
+		<div ng-app="">
+			<input type="text" ng-model="data.message">
+			<h1>{{ data.message }}</h1>
+			<div ng-controller="FirstCtrl">
+				<input type="text" ng-model="data.message">
+				<h1>{{ data.message }}</h1>
+			</div>
+			<div ng-controller="SecondCtrl">
+				<input type="text" ng-model="data.message">
+				<h1>{{ data.message }}</h1>
+			</div>
+		</div>
+		<script type="text/javascript" src="../library/angular.min.js"></script>
+		<script text="text/javascript" src="main.js"></script>
+	</body>
+</html>
